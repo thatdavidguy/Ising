@@ -3,7 +3,8 @@
 The Ising model is a widely used mathematical model in statistical mechanics, particularly in the study of magnetic systems. It describes the behavior of a lattice of spins, which represent magnetic moments in a material. These spins can be in one of two states: "up" or "down". The model considers interactions between neighboring spins, influencing the overall energy of the system.
 
 ## Example
-![Untitledvideo-MadewithClipchamp1-ezgif com-optimize](https://github.com/thatdavidguy/Ising/assets/61171213/1d9e85c9-54eb-44fe-9272-a4eb0a10033b)
+![ising 2 - Made with Clipchamp (2)](https://github.com/thatdavidguy/Ising-Modelling/assets/61171213/655437bb-6a72-4cf3-8e64-eabff6ee4868)
+
 
 ## Overview
 This Python code simulates the Ising model using the Pygame and NumPy libraries. It provides a visual representation of the lattice and tracks its evolution over time.

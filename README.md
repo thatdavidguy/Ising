@@ -3,7 +3,17 @@
 The Ising model is a widely used mathematical model in statistical mechanics, particularly in the study of magnetic systems. It describes the behavior of a lattice of spins, which represent magnetic moments in a material. These spins can be in one of two states: "up" or "down". The model considers interactions between neighboring spins, influencing the overall energy of the system.
 
 ## Example
+50x50 Grid
+
 ![ising 2 - Made with Clipchamp (2)](https://github.com/thatdavidguy/Ising-Modelling/assets/61171213/655437bb-6a72-4cf3-8e64-eabff6ee4868)
+
+
+400x400 Grid
+
+![Untitled video - Made with Clipchamp (3)](https://github.com/thatdavidguy/Ising-Modelling/assets/61171213/b73c4963-0705-4290-8231-03ac4bdf9ca9)
+
+![ising 3](https://github.com/thatdavidguy/Ising-Modelling/assets/61171213/582ce7b2-125e-4cc0-b2bc-d4a292be888b)
+
 
 
 ## Overview

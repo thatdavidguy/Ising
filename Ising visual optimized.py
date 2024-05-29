@@ -46,8 +46,8 @@ def main(N,times,BJ):
 
     spin_arr = np.zeros((N, N))
     init_random = np.random.random((N,N))
-    spin_arr[init_random>=0.5] = 1
-    spin_arr[init_random<0.5] = -1
+    spin_arr[init_random>=0.25] = 1
+    spin_arr[init_random<0.25] = -1
     draw(screen,spin_arr,size)
 
     pygame.display.flip()

@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 color_bg = (10,10,10)
 color_grid = (40,40,40)
-color_die_next = (170,170,170)
+color_die_next =  (170,170,170)
 color_alive_next = (255,255,255)
 
 
@@ -33,21 +33,22 @@ def draw(screen, cells, size):
         #else:
          #   pygame.draw.rect(screen, color_bg, (col * size, row * size, size - 1, size - 1))
 
+def render_text(screen, text, font, color, x, y):
+    text_surface = font.render(text, True, color)
+    screen.blit(text_surface, (x, y))
 
-def main(N,times,BJ):
+def main(N,times,BJ,spin_arr):
 
     start_timer = time.time()
     
     pygame.init()
     size = 2
     screen = pygame.display.set_mode((N*size,N*size))    
+    font = pygame.font.SysFont(None, int(N/10)+1)
+    pygame.display.set_caption(f"{N} x {N}, BJ: {BJ}")
 
     screen.fill(color_grid)
 
-    spin_arr = np.zeros((N, N))
-    init_random = np.random.random((N,N))
-    spin_arr[init_random>=0.25] = 1
-    spin_arr[init_random<0.25] = -1
     draw(screen,spin_arr,size)
 
     pygame.display.flip()
@@ -85,17 +86,31 @@ def main(N,times,BJ):
             iterations += 1
             if iterations>times:
                 return(net_spins,net_energy)
+            
             completion_percentage = (iterations / times) * 100
-            if completion_percentage % 1 == 0: 
-                spin_total = spin_arr.sum()
-                if spin_total>0:
-                    spin_total_precent = (spin_total*100)/(N*N)
-                    print(f"Completion: {completion_percentage:.0f}%\t\tEnergy: {get_energy(spin_arr)}\t\t {spin_total_precent}% Up Spin")
-                elif spin_total==0:
-                    print(f"Completion: {completion_percentage:.0f}%\t\tEnergy: {get_energy(spin_arr)}\t\t Equal Spin")
-                else:
-                    spin_total_precent = (spin_total*-100)/(N*N)
-                    print(f"Completion: {completion_percentage:.0f}%\t\tEnergy: {get_energy(spin_arr)}\t\t {spin_total_precent}% Down Spin")
+            spin_total = spin_arr.sum()
+            if spin_total!=0:
+                spin_total_precent = (spin_total*100)/(N*N)
+            else:
+                spin_total_precent = 0
+
+            if spin_total_precent < 0:
+                color = (255,200,200)
+            else:
+                color = (200,255,200)
+            render_text(screen,f"{completion_percentage:.0f}% Complete", font, color, N*0.15, N*1.8)
+            render_text(screen,f"Net Spin: {spin_total_precent:.1f}%", font, color, N*1.2, N*1.8)
+
+            #if completion_percentage % 1 == 0: 
+            #    spin_total = spin_arr.sum()
+            #    if spin_total>0:
+            #        spin_total_precent = (spin_total*100)/(N*N)
+            #        print(f"Completion: {completion_percentage:.0f}%\t\tEnergy: {get_energy(spin_arr)}\t\t {spin_total_precent}% Up Spin")
+            #    elif spin_total==0:
+            #        print(f"Completion: {completion_percentage:.0f}%\t\tEnergy: {get_energy(spin_arr)}\t\t Equal Spin")
+            #    else:
+            #        spin_total_precent = (spin_total*-100)/(N*N)
+            #        print(f"Completion: {completion_percentage:.0f}%\t\tEnergy: {get_energy(spin_arr)}\t\t {spin_total_precent}% Down Spin")
 
             i = np.random.randint(0,2)
             j = np.random.randint(0,2)
@@ -128,7 +143,15 @@ def plot_simulation(net_spins, net_energy, beta_J):
     fig.tight_layout()
     fig.suptitle(fr'Evolution of Average Spin and Energy for $\beta J = ${beta_J}', y=1.07, size=18)
     plt.show()
- 
+
 if __name__ == '__main__':
-    net_spins,net_energy = main(400,10000,0.7)
-    plot_simulation(net_spins, net_energy, 0.7)
+    #main(N,Steps,BJ,Spin_arr)
+
+    N = 200
+    spin_arr = np.zeros((N, N))
+    init_random = np.random.random((N,N))
+    spin_arr[init_random>=0.45] =-1
+    spin_arr[init_random<0.45] = 1
+
+    net_spins,net_energy = main(N,1000,0.7,spin_arr)
+    #plot_simulation(net_spins, net_energy, 0.7)

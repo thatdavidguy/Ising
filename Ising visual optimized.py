@@ -180,8 +180,8 @@ if __name__ == '__main__':
     N = 400
     spin_arr = np.zeros((N, N))
     init_random = np.random.random((N,N))
-    spin_arr[init_random>=0.45] =1
-    spin_arr[init_random<0.45] = -1
+    spin_arr[init_random>=0.25] =1
+    spin_arr[init_random<0.25] = -1
 
     net_spins,net_energy,blobsizelist = main(N,2000,0.7,spin_arr)
     plot_simulation(net_spins, net_energy,blobsizelist, 0.7)

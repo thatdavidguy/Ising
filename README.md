@@ -26,4 +26,4 @@ Visualization: The lattice is visualized using Pygame, with each spin represente
 Initialization: Pygame is initialized, and the initial state of the lattice is displayed.
 Main Loop: The simulation runs continuously, updating the lattice based on user input and the rules of the Ising model. Information about the completion percentage, energy, and spin status is displayed on the screen.
 ## Conclusion
-This simulation provides an interactive way to explore the behavior of the Ising model. By visualizing the lattice and tracking its evolution, users can gain insights into the complex dynamics of magnetic systems and emergent phenomena such as phase transitions.
+This simulation provides an interactive way to explore the behavior of the Ising model. By visualizing the lattice and tracking its evolution, users can gain insights into the complex dynamics of magnetic systems and emergent phenomena such as phase transitions. <br> still unfinished :( 
